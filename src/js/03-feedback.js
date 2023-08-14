@@ -26,10 +26,14 @@ function onInput() {
 function onSubmit(event) {
   event.preventDefault();
   const currentData = getDataForm();
-  console.log(currentData);
 
-  localStorage.removeItem(FEEDBACK_FORM_STATE);
-  form.reset();
+  if (currentData.email && currentData.message) {
+    console.log(currentData);
+    localStorage.removeItem(FEEDBACK_FORM_STATE);
+    form.reset();
+  } else {
+    alert('Both fields must be filled');
+  }
 }
 
 function getDataForm() {
